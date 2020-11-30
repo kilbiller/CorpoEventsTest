@@ -1,6 +1,7 @@
 module.exports = {
-    HOST: "localhost",
-    USER: "userTP",
-    PASSWORD: "tp",
-    DB: "dbTP"
+    HOST: process.env.DATABASE_HOST,
+    USER: 'root',
+    PASSWORD: 'pwd',
+    DB: "dbTP",
+    port: "3306"
   };

@@ -6,12 +6,14 @@ const connection = mysql.createConnection({
   host: dbConfig.HOST,
   user: dbConfig.USER,
   password: dbConfig.PASSWORD,
-  database: dbConfig.DB
+  database: dbConfig.DB,
+  port: dbConfig.port
 });
+
 
 // open the MySQL connection
 connection.connect(error => {
-  if (error) throw error;
+  if (error) throw errorConnect(error,connection);
   console.log("Successfully connected to the database.");
 });
 

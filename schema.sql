@@ -1,0 +1,9 @@
+CREATE DATABASE IF NOT EXISTS dbTP;
+GRANT ALL PRIVILEGES on dbTP.* TO 'root'@'%' IDENTIFIED BY 'pwd' WITH GRANT OPTION;
+
+CREATE TABLE IF NOT EXISTS `books` (
+    isbn varchar(255) NOT NULL PRIMARY KEY,
+    name varchar(255) NOT NULL,
+    author varchar(255) NOT NULL,
+    release_date INT(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
