@@ -1,5 +1,6 @@
-CREATE DATABASE IF NOT EXISTS dbTP;
-GRANT ALL PRIVILEGES on dbTP.* TO 'userTP'@'localhost' IDENTIFIED BY 'tp' WITH GRANT OPTION;
+-- Fix issue with nodejs mysql driver
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'tp';
+ALTER USER 'root'@'%' IDENTIFIED WITH mysql_native_password BY 'tp';
 
 CREATE TABLE IF NOT EXISTS `books` (
     isbn varchar(255) NOT NULL PRIMARY KEY,

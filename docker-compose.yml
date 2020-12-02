@@ -4,13 +4,13 @@ services:
     image: mysql
     volumes:
       - ./mysql-dump:/docker-entrypoint-initdb.d
+      - mysql_data:/var/lib/mysql
     restart: unless-stopped
     environment:
       MYSQL_DATABASE: dbTP
-      MYSQL_USER: userTP
       MYSQL_ROOT_PASSWORD: tp
     ports:
-      - "3307:3307"
+      - "3306:3306"
     healthcheck:
       test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
       timeout: 20s
@@ -20,13 +20,14 @@ services:
       container_name: nodejs
       build: ./
       ports:
-      - "3000:3000"
+        - "3000:3000"
       volumes:
-      - .:/app
-      - ./error.log:/usr/src/app/error.log
-      links:
-      - db
+        - .:/app
       environment:
         MYSQL_HOST_IP: db
+      restart: always
 
+volumes:
+  mysql_data:
+    driver: local
 

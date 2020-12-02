@@ -3,5 +3,5 @@ module.exports = {
     USER: 'root',
     PASSWORD: 'tp',
     DB: "dbTP",
-    PORT: "3307"
+    PORT: "3306"
   };
